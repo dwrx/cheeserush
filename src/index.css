@@ -5,9 +5,13 @@
 }
 
 body {
-  font-family: 'Comic Neue', sans-serif;
+  font-family: "Comic Neue", sans-serif;
   background-color: #f5e8d2;
   color: #5a3e2b;
+}
+
+body button {
+  font-family: "Comic Neue", sans-serif;
 }
 
 .app-container {

@@ -1,0 +1,71 @@
+.inventory-block {
+    background-color: #fff1e6;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .inventory-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .inventory-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
+  .inventory-item {
+    flex: 1 1 100%;
+    background-color: #ffd7a1;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 400px) {
+    .inventory-item {
+      flex: 1 1 30%;
+    }
+  }
+  
+  .item-image {
+    width: 50px;
+    height: auto;
+    margin-bottom: 5px;
+  }
+  
+  .greyed-out {
+    filter: grayscale(100%);
+    opacity: 0.5;
+  }
+  
+  .item-actions {
+    margin-top: 5px;
+  }
+  
+  .use-button,
+  .buy-button {
+    background-color: #f4a261;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .use-button:disabled {
+    background-color: #d9c8a9;
+    cursor: not-allowed;
+  }
+  
+  .use-button:hover:not(:disabled),
+  .buy-button:hover {
+    background-color: #e68a50;
+  }

@@ -1,0 +1,46 @@
+.top-panel {
+    background-color: #ffd7a1;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2rem;
+  }
+  
+  .cheese-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .progress-bar {
+    background-color: #e6c08e;
+    border-radius: 10px;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    background-color: #f4a261;
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9rem;
+  }

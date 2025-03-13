@@ -17,7 +17,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  .game-wrapper {
+  .app-container .game-wrapper {
     width: 400px;
     margin: 20px auto;
   }

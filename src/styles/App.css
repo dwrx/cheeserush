@@ -5,3 +5,22 @@
   flex-direction: column;
   gap: 15px;
 }
+
+.content {
+  margin-top: 100px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 768px) {
+  .game-wrapper {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  .content {
+    margin-top: 80px;
+  }
+}

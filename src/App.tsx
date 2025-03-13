@@ -11,9 +11,11 @@ const App: React.FC = () => {
     <div className="app-container">
       <div className="game-wrapper">
         <TopPanel />
-        <MouseBlock />
-        <TeamBlock />
-        <InventoryBlock />
+        <div className="content">
+          <MouseBlock />
+          <TeamBlock />
+          <InventoryBlock />
+        </div>
         <NavMenu />
       </div>
     </div>

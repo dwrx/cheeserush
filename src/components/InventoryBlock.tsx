@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import cheeseIcon from '../assets/cheese.png';
+import milkIcon from '../assets/milk.png';
 import cakeImage from '../assets/cake.png';
+import cheeseburgerImage from '../assets/hamburger.png';
 import '../styles/InventoryBlock.css';
 
 const InventoryBlock: React.FC = () => {
@@ -8,9 +9,9 @@ const InventoryBlock: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   const items = [
-    { id: 1, name: 'Cake', image: '../assets/cake.png', count: 2, effect: 'Decrease hunt time by 5 min' },
-    { id: 2, name: 'Empty', image: null, count: 0, effect: '' },
-    { id: 3, name: 'Empty', image: null, count: 0, effect: '' },
+    { id: 1, name: 'Cake', image: cakeImage, count: 2, effect: 'Decrease hunt time by 5 min' },
+    { id: 2, name: 'Milk', image: milkIcon, count: 1, effect: 'Increase all rewards by 10% for 2h' },
+    { id: 3, name: 'Cheeseburger', image: cheeseburgerImage, count: 0, effect: 'Instantly finish hunt' },
   ];
 
   return (

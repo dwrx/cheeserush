@@ -1,46 +1,63 @@
 .top-panel {
-    background-color: #ffd7a1;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .stat-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 1.2rem;
-  }
-  
-  .cheese-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .progress-bar {
-    background-color: #e6c08e;
-    border-radius: 10px;
-    height: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .progress-fill {
-    background-color: #f4a261;
-    height: 100%;
-    transition: width 0.3s ease;
-  }
-  
-  .progress-text {
-    position: absolute;
-    top: 50%;
+  background-color: #ffd7a1;
+  padding: 15px;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.32);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.cheese-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.progress-bar {
+  background-color: #e6c08e;
+  border-radius: 10px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #f4a261;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .top-panel {
+    width: 400px;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.9rem;
+    transform: translateX(-50%);
+    border-radius: 0 0 15px 15px;
   }
+}

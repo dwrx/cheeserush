@@ -1,71 +1,95 @@
 .mouse-block {
-    background-color: #fff1e6;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff1e6;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mouse-image {
+  width: 130px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.rush-button,
+.collect-button {
+  background-color: #f4a261;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 auto;
+  min-width: 50%;
+  text-align: center;
+  justify-content: center;
+}
+
+.rush-button:hover,
+.collect-button:hover {
+  background-color: #e68a50;
+}
+
+.progress-container {
+  margin-top: 15px;
+}
+
+.progress-bar {
+  background-color: #e6c08e;
+  border-radius: 10px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #f4a261;
+  height: 100%;
+  transition: width 0.1s linear;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+}
+
+.reward-text {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.cheese-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+.spinner.small {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  
-  .mouse-image {
-    width: 160px;
-    height: auto;
-    margin-bottom: 15px;
-  }
-  
-  .rush-button,
-  .collect-button {
-    background-color: #f4a261;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: 0 auto;
-  }
-  
-  .rush-button:hover,
-  .collect-button:hover {
-    background-color: #e68a50;
-  }
-  
-  .progress-container {
-    margin-top: 15px;
-  }
-  
-  .progress-bar {
-    background-color: #e6c08e;
-    border-radius: 10px;
-    height: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .progress-fill {
-    background-color: #f4a261;
-    height: 100%;
-    transition: width 0.1s linear;
-  }
-  
-  .progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.9rem;
-  }
-  
-  .reward-text {
-    display: block;
-    margin-top: 5px;
-    font-size: 0.9rem;
-  }
-  
-  .cheese-icon {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-  }
+}

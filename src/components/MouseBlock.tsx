@@ -16,6 +16,7 @@ const MouseBlock: React.FC<{
   const { publicKey, sendTransaction } = useWallet();
   const [state, setState] = useState<"idle" | "rushing" | "done">("idle");
   const [timeLeft, setTimeLeft] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!playerData || !playerData.lastRushStart) {
@@ -56,38 +57,52 @@ const MouseBlock: React.FC<{
 
   const startRush = async () => {
     if (!program || !playerPda || !publicKey) return;
-    const tx = await program.methods
-      .startRush()
-      .accounts({
-        player: playerPda,
-        owner: publicKey,
-      })
-      .transaction();
-    const { blockhash } = await program.provider.connection.getLatestBlockhash();
-    tx.recentBlockhash = blockhash;
-    tx.feePayer = publicKey;
-    const txId = await sendTransaction(tx, program.provider.connection);
-    await program.provider.connection.confirmTransaction(txId);
-    await fetchPlayerData();
+    setIsLoading(true);
+    try {
+      const tx = await program.methods
+        .startRush()
+        .accounts({
+          player: playerPda,
+          owner: publicKey,
+        })
+        .transaction();
+      const { blockhash } = await program.provider.connection.getLatestBlockhash();
+      tx.recentBlockhash = blockhash;
+      tx.feePayer = publicKey;
+      const txId = await sendTransaction(tx, program.provider.connection);
+      await program.provider.connection.confirmTransaction(txId);
+      await fetchPlayerData();
+    } catch (error) {
+      console.error("Error starting rush:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const collectCheese = async () => {
     if (!program || !playerPda || !publicKey) return;
-    const tx = await program.methods
-      .claimRush()
-      .accounts({
-        player: playerPda,
-        // @ts-ignore
-        referrer: null,
-        owner: publicKey,
-      })
-      .transaction();
-    const { blockhash } = await program.provider.connection.getLatestBlockhash();
-    tx.recentBlockhash = blockhash;
-    tx.feePayer = publicKey;
-    const txId = await sendTransaction(tx, program.provider.connection);
-    await program.provider.connection.confirmTransaction(txId);
-    await fetchPlayerData();
+    setIsLoading(true);
+    try {
+      const tx = await program.methods
+        .claimRush()
+        .accounts({
+          player: playerPda,
+          // @ts-ignore
+          referrer: null,
+          owner: publicKey,
+        })
+        .transaction();
+      const { blockhash } = await program.provider.connection.getLatestBlockhash();
+      tx.recentBlockhash = blockhash;
+      tx.feePayer = publicKey;
+      const txId = await sendTransaction(tx, program.provider.connection);
+      await program.provider.connection.confirmTransaction(txId);
+      await fetchPlayerData();
+    } catch (error) {
+      console.error("Error claiming cheese:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const reward = playerData
@@ -102,8 +117,8 @@ const MouseBlock: React.FC<{
           Create Account
         </button>
       ) : state === "idle" ? (
-        <button className="rush-button" onClick={startRush}>
-          Rush!
+        <button className="rush-button" onClick={startRush} disabled={isLoading}>
+          {isLoading ? <div className="spinner small" /> : "Rush!"}
         </button>
       ) : state === "rushing" && timeLeft > 0 ? (
         <div className="progress-container">
@@ -116,8 +131,14 @@ const MouseBlock: React.FC<{
           </span>
         </div>
       ) : (
-        <button className="collect-button" onClick={collectCheese}>
-          Collect {reward} <img src={cheeseIcon} alt="Cheese" className="cheese-icon" />
+        <button className="collect-button" onClick={collectCheese} disabled={isLoading}>
+          {isLoading ? (
+            <div className="spinner small" />
+          ) : (
+            <>
+              Collect {reward} <img src={cheeseIcon} alt="Cheese" className="cheese-icon" />
+            </>
+          )}
         </button>
       )}
     </div>

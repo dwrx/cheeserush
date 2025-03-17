@@ -82,6 +82,10 @@
   display: block;
 }
 
+.team-member.locked .bro-image {
+  filter: grayscale(1);
+}
+
 .claim-button {
   background-color: #f4a261;
   border: none;

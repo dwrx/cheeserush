@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import cheeseIcon from "../assets/cheese.png";
-import broImage from "../assets/mouse.png";
+import broImage from "../assets/bro.png";
+import lockImage from "../assets/lock.png";
 import { Program } from "@coral-xyz/anchor";
 import { PublicKey } from "@solana/web3.js";
 import { useWallet } from "@solana/wallet-adapter-react";
@@ -137,7 +138,7 @@ const TeamBlock: React.FC<{
           return (
             <div key={bro.id} className={`team-member ${!bro.unlocked ? "locked" : ""}`}>
               {bro.unlocked && <div className="level-circle">LVL {formatNumber(bro.level)}</div>}
-              <img src={broImage} alt="Lil Bro" className="bro-image" />
+              <img src={bro.unlocked ? broImage : lockImage} alt="Lil Bro" className={`bro-image`} />
               {bro.unlocked ? (
                 showUpgrades ? (
                   <div className="upgrade-info">

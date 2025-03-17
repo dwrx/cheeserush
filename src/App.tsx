@@ -46,10 +46,7 @@ const Game: React.FC = () => {
 
   const playerPda = React.useMemo(() => {
     if (!publicKey || !program) return null;
-    return PublicKey.findProgramAddressSync(
-      [Buffer.from("player"), publicKey.toBuffer()],
-      program.programId
-    )[0];
+    return PublicKey.findProgramAddressSync([Buffer.from("player"), publicKey.toBuffer()], program.programId)[0];
   }, [publicKey, program]);
 
   const fetchPlayerData = useCallback(async () => {
@@ -119,44 +116,55 @@ const Game: React.FC = () => {
 
   return (
     <div className="app-container">
-      <TopPanel
-        playerData={playerData}
-        fetchPlayerData={fetchPlayerData}
-        onLevelUp={levelUp}
-      />
-      <div className="content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <MouseBlock
-                  playerData={playerData}
-                  playerPda={playerPda}
-                  program={program}
-                  fetchPlayerData={fetchPlayerData}
-                  createAccount={createAccount}
-                />
-                <TeamBlock
-                  playerData={playerData}
-                  playerPda={playerPda}
-                  program={program}
-                  fetchPlayerData={fetchPlayerData}
-                />
-                <InventoryBlock
-                  playerData={playerData}
-                  playerPda={playerPda}
-                  program={program}
-                  fetchPlayerData={fetchPlayerData}
-                />
-              </>
-            }
-          />
-          <Route path="/shop" element={<Shop playerData={playerData} />} />
-          <Route path="/leaderboard" element={<Leaderboard />} />
-        </Routes>
-      </div>
-      <NavMenu />
+      {!publicKey ? (
+        <div className="connect-wallet">
+          <WalletMultiButton />
+          <div className="beta-alert">
+            Cheese Rush is in early beta test on <b>Sonic Testnet v1</b>. You may need test SOL from Faucet{" "}
+            <a href="https://faucet.sonic.game/" target="_blank" rel="noopener noreferrer">
+              https://faucet.sonic.game/
+            </a>{" "}
+            to play.
+          </div>
+        </div>
+      ) : (
+        <>
+          <TopPanel playerData={playerData} fetchPlayerData={fetchPlayerData} onLevelUp={levelUp} />
+          <div className="content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <MouseBlock
+                      playerData={playerData}
+                      playerPda={playerPda}
+                      program={program}
+                      fetchPlayerData={fetchPlayerData}
+                      createAccount={createAccount}
+                    />
+                    <TeamBlock
+                      playerData={playerData}
+                      playerPda={playerPda}
+                      program={program}
+                      fetchPlayerData={fetchPlayerData}
+                    />
+                    <InventoryBlock
+                      playerData={playerData}
+                      playerPda={playerPda}
+                      program={program}
+                      fetchPlayerData={fetchPlayerData}
+                    />
+                  </>
+                }
+              />
+              <Route path="/shop" element={<Shop playerData={playerData} />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+            </Routes>
+          </div>
+          <NavMenu />
+        </>
+      )}
     </div>
   );
 };

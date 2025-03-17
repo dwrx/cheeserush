@@ -20,6 +20,10 @@ body button {
   justify-content: center;
 }
 
+.wallet-connect {
+  margin: 0 auto;
+}
+
 @media (min-width: 768px) {
   .app-container .game-wrapper {
     width: 400px;

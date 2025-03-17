@@ -116,6 +116,13 @@ const Game: React.FC = () => {
         {!publicKey ? (
           <div className="connect-wallet">
             <WalletMultiButton />
+            <div className="beta-alert">
+              Cheese Rush is in early beta test on <b>Sonic Testnet v1</b>. You may need test SOL from Faucet{" "}
+              <a href="https://faucet.sonic.game/" target="_blank" rel="noopener noreferrer">
+                https://faucet.sonic.game/
+              </a>{" "}
+              to play.
+            </div>
           </div>
         ) : (
           <>
